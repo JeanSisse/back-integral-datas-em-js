@@ -56,13 +56,14 @@ const pessoas = [
 function ordenaListaDePessoasPorData(listaDePessoas){
 
     for(let registro of listaDePessoas){
-        registro.registered = +(new Date(registro.registered));
+      registro.registered = +(new Date(registro.registered));
     }
-  
+
     listaDePessoas.sort((p1, p2) => p1.registered - p2.registered);
-  
+    const pattern = "EEE MMM d yyyy HH:mm:ss \'GMT\'+0000";
+    
     for(let registro of listaDePessoas){
-        registro.registered = format(((new Date(registro.registered)).getTime() + 1000*60*60*3), 'EEE MMM d yyyy HH:mm:ss \'GMT\'+0000');
+      registro.registered = format(((new Date(registro.registered)).getTime() + 1000*60*60*3), pattern);
     }
 
     return listaDePessoas;
